@@ -5,6 +5,9 @@ class Product {
   final String imageURL;
   final double price;
   final String estimatedTime;
+  final String description;
+  final String size;
+  final String calories;
   final int numberOfSales;
   final bool isFavorite;
 
@@ -15,6 +18,10 @@ class Product {
     required this.imageURL,
     required this.price,
     this.estimatedTime = '30 Mins',
+    this.description =
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut fringilla lacus. Quisque magna quam, elementum sed odio quis, faucibus mattis augue. Curabitur vestibulum eros a ornare faucibus. Donec sollicitudin dapibus leo, ut elementum erat consequat et. Nullam placerat metus tellus, eget consectetur magna pretium vitae. Pellentesque at tristique dui, vel rhoncus urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin maximus neque eu mollis pharetra. Donec faucibus nisl vel diam fermentum, sit amet lobortis magna rhoncus.',
+    this.size = 'Medium',
+    this.calories = '150 Kcal',
     this.numberOfSales = 2,
     this.isFavorite = false,
   });

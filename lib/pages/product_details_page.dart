@@ -124,16 +124,16 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Column(
+                        Column(
                           children: [
-                            Text(
+                            const Text(
                               "Size",
                               style:
                                   TextStyle(fontSize: 18, color: Colors.grey),
                             ),
                             Text(
-                              "Medium",
-                              style: TextStyle(
+                              _productItem.size,
+                              style: const TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold),
                             ),
                           ],
@@ -145,16 +145,16 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                           indent: 8, //spacing at the start of divider
                           endIndent: 8, //spacing at the end of divider
                         ),
-                        const Column(
+                        Column(
                           children: [
-                            Text(
+                            const Text(
                               "Calories",
                               style:
                                   TextStyle(fontSize: 18, color: Colors.grey),
                             ),
                             Text(
-                              "150 Kcal",
-                              style: TextStyle(
+                              _productItem.calories,
+                              style: const TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold),
                             ),
                           ],
@@ -189,7 +189,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 8),
-                  const Text("Description"),
+                  Text(_productItem.description),
                   const SizedBox(height: 16),
                   // Moved the price and Add to Cart to the bottom navigation
                 ],

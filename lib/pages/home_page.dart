@@ -196,6 +196,7 @@ class _HomePageState extends State<HomePage> {
                                         color: index == selectedCategoryIndex
                                             ? Colors.white
                                             : null,
+                                        fit: BoxFit.cover,
                                       ),
                                       const SizedBox(
                                         height: 8.0,
@@ -224,6 +225,7 @@ class _HomePageState extends State<HomePage> {
                       crossAxisCount: 2, // Two elements in each row
                       crossAxisSpacing: 15.0, // Spacing between columns
                       mainAxisSpacing: 15.0, // Spacing between rows
+                      childAspectRatio: 0.80,
                     ),
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
@@ -242,29 +244,25 @@ class _HomePageState extends State<HomePage> {
                                       onUpdateFavorite: updateFavoriteStatus,
                                     )));
                       },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        width: 100,
-                        height: 250,
-                        child: Stack(
-                            alignment: AlignmentDirectional.center,
-                            children: [
-                              Column(children: [
-                                Image.network(
-                                  filteredProduct[index].imageURL,
-                                  height: 100,
-                                  width: 100,
-                                ),
-                                Text(
+                      child: Stack(
+                          alignment: AlignmentDirectional.center,
+                          children: [
+                            Column(children: [
+                              Image.network(
+                                filteredProduct[index].imageURL,
+                                height: 100,
+                                width: 100,
+                              ),
+                              Flexible(
+                                child: Text(
                                   filteredProduct[index].name,
                                   style: const TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                Text(
+                              ),
+                              Flexible(
+                                child: Text(
                                   categories
                                       .firstWhere((item) =>
                                           item.id ==
@@ -272,43 +270,43 @@ class _HomePageState extends State<HomePage> {
                                       .name,
                                   style: const TextStyle(color: Colors.grey),
                                 ),
-                                const SizedBox(
-                                  height: 4.0,
-                                ),
-                                Text(
-                                  '\$ ${filteredProduct[index].price}',
-                                  style: const TextStyle(
-                                      color: Colors.deepOrange,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18),
-                                ),
-                              ]),
-                              PositionedDirectional(
-                                top: 0,
-                                end: 0,
-                                child: IconButton(
-                                  icon: Icon(
-                                    filteredProduct[index].isFavorite
-                                        ? Icons.favorite
-                                        : Icons.favorite_outline_outlined,
-                                    color: Colors.red,
-                                  ),
-                                  onPressed: () {
-                                    setState(() {
-                                      final selectedProductIndex = products
-                                          .indexOf(filteredProduct[index]);
-                                      filteredProduct[index] =
-                                          products[selectedProductIndex] =
-                                              filteredProduct[index].copyWith(
-                                                  isFavorite:
-                                                      !filteredProduct[index]
-                                                          .isFavorite);
-                                    });
-                                  },
-                                ),
+                              ),
+                              const SizedBox(
+                                height: 4.0,
+                              ),
+                              Text(
+                                '\$ ${filteredProduct[index].price}',
+                                style: const TextStyle(
+                                    color: Colors.deepOrange,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),
                               ),
                             ]),
-                      ),
+                            PositionedDirectional(
+                              top: 0,
+                              end: 0,
+                              child: IconButton(
+                                icon: Icon(
+                                  filteredProduct[index].isFavorite
+                                      ? Icons.favorite
+                                      : Icons.favorite_outline_outlined,
+                                  color: Colors.red,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    final selectedProductIndex = products
+                                        .indexOf(filteredProduct[index]);
+                                    filteredProduct[index] =
+                                        products[selectedProductIndex] =
+                                            filteredProduct[index].copyWith(
+                                                isFavorite:
+                                                    !filteredProduct[index]
+                                                        .isFavorite);
+                                  });
+                                },
+                              ),
+                            ),
+                          ]),
                     ),
                   )
                 ],

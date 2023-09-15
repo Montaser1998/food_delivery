@@ -215,7 +215,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
               ),
             ),
             SizedBox(
-              width: 250.0, // Set the desired width here
+              width: 200.0, // Set the desired width here
               height: 100.0, // Set the desired width here
               child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
